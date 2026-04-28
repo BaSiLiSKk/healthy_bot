@@ -4,12 +4,12 @@ from fastapi.staticfiles import StaticFiles
 
 from routes import router
 
-app = FastAPI(tittle = "Web AI Data Agent")
+app = FastAPI(title="Web AI Data Agent")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origis=["*"],
-    allow_credentials=True
+    allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -17,6 +17,8 @@ app.add_middleware(
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.include_router(router)
 
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+
+    uvicorn.run(app, host="0.0.0.0", port=8004)
